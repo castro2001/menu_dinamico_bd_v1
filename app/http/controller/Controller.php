@@ -8,7 +8,6 @@ class Controller{
        extract($data);
         $route = str_replace(".","/",$route);
         //User/user.php = user.user
-        file_exists("../");
         if(file_exists("../resource/view/{$route}.php")){
             ob_start();
             include_once "../resource/view/{$route}.php";
@@ -23,18 +22,6 @@ class Controller{
         header("Location: {$route}");
     }
 
-    public function asset($uri){
 
-  $staticDir = __DIR__ . '/../resource';
-    $filePath = $staticDir . '/' . $uri;
-    if (file_exists($filePath)) {
-        $fileType = mime_content_type($filePath);
-        header('Content-Type: ' . $fileType);
-        readfile($filePath);
-        exit;
-    } else {
-        echo "Archivo no disponible";
-    }
-    }
   
 }
